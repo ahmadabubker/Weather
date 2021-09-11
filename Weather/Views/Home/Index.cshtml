@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Weather.Models.JordanCity>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<style>
+
+    p {
+        text-align: center;
+        font-weight: bold;
+        font-size: 30px;
+    }
+</style>
+<script language="javascript">
+    setTimeout(function () {
+        window.location.reload();
+    }, 10000);
+</script>
+<body onload=display_ct();>
+    <p id='ct' class="text-light"></p>
+    <p class="text-light">@DateTime.Now.ToLongDateString()</p>
+
+    <div class="card-columns" s>
+        @foreach (var item in Model)
+        {
+            <div class="card bg-primary" style="border-radius:25px;   box-shadow:10px 5px 10px white; opacity:0.8;">
+                <div class="card-body text-center">
+                    <p class="card-text text-dark">Name:@item.CitieName</p>
+                    <p class="card-text text-danger">LastUp:@item.Lastupdated</p>
+                    <p class="card-text text-danger">Temprture:@item.Temp_c</p>
+                </div>
+            </div>
+
+        }
+    </div>
+
+
+
+
+
+</body>
+<script type="text/javascript">
+
+    function display_c() {
+        var refresh = 1000; // Refresh rate in milli seconds
+        mytime = setTimeout('display_ct()', refresh)
+    }
+
+    function display_ct() {
+        var x = new Date().toLocaleTimeString()
+        document.getElementById('ct').innerHTML = x;
+        display_c();
+    }
+</script>
